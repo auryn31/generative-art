@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type { Point } from '$lib/model';
+
 	import { onMount } from 'svelte';
 
 	let canvas: HTMLCanvasElement;
@@ -14,28 +16,13 @@
 		}
 	});
 
-	const getRandomDirection = (): number => {
-		if (Math.random() > 0.5) {
-			return 1;
-		} else {
-			return -1;
-		}
-	};
-	const getRandomValue = (): number => {
-		return (Math.random() / 10) * getRandomDirection();
-	};
-
 	const getRandomColor = (): string => {
 		// const colors = ['#727273', '#00010D', '#F2F2F2', '#BFBFBF', '#262626']; // gray
-		const colors = ['#010326', '#125952', '#D9B88F', '#D97059', '#A65B5B'];
+		const colors = ['#010326', '#125952', '#D9B88F', '#D97059', '#A65B5B']; //red green
 		// const colors = ['#BFBFBF', '#8C8C8C', '#595959', '#262626', '#0D0D0D'];
 		// const colors = ['#729CA6', '#1E5933', '#01260A', '#75A60D', '#0D0D0D']; // green
 		return colors[Math.round(Math.random() * colors.length)];
 	};
-	interface Point {
-		x: number;
-		y: number;
-	}
 
 	const drawTriangle = (
 		ctx: CanvasRenderingContext2D,
@@ -98,8 +85,5 @@
 		align-items: center;
 		text-align: center;
 		min-height: calc(100vh - 1rem);
-	}
-	canvas {
-		border: 1px solid black;
 	}
 </style>

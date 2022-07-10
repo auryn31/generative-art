@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { getRandomColor, getRandomValueWithDirection } from '$lib/helper';
+
 	import { onMount } from 'svelte';
 
 	let canvas: HTMLCanvasElement;
@@ -18,23 +20,8 @@
 		}
 	});
 
-	const getRandomDirection = (): number => {
-		if (Math.random() > 0.5) {
-			return 1;
-		} else {
-			return -1;
-		}
-	};
-	const getRandomValue = (): number => {
-		return (Math.random() / 10) * getRandomDirection();
-	};
-
-	const getRandomColor = (): string => {
-		// const colors = ['#727273', '#00010D', '#F2F2F2', '#BFBFBF', '#262626']; // gray
-		// const colors = ['#010326', '#125952', '#D9B88F', '#D97059', '#A65B5B'];
-		const colors = ['#BFBFBF', '#8C8C8C', '#595959', '#262626', '#0D0D0D'];
-		// const colors = ['#729CA6', '#1E5933', '#01260A', '#75A60D', '#0D0D0D']; // green
-		return colors[Math.round(Math.random() * colors.length)];
+	const getRandomNumberWithSpread = (): number => {
+		return getRandomValueWithDirection() / 10;
 	};
 
 	const draw = (
@@ -51,17 +38,17 @@
 		for (let i = 0; i < 100; i++) {
 			ctx.beginPath();
 			let startPoint = {
-				x: offsetx + width / 2 + width * getRandomValue(),
-				y: offsety + height * (0.2 + getRandomValue())
+				x: offsetx + width / 2 + width * getRandomNumberWithSpread(),
+				y: offsety + height * (0.2 + getRandomNumberWithSpread())
 			};
 			ctx.moveTo(startPoint.x, startPoint.y);
 			ctx.lineTo(
-				offsetx + width * (0.8 + getRandomValue()),
-				offsety + height * (0.8 + getRandomValue())
+				offsetx + width * (0.8 + getRandomNumberWithSpread()),
+				offsety + height * (0.8 + getRandomNumberWithSpread())
 			);
 			ctx.lineTo(
-				offsetx + width * (0.2 + getRandomValue()),
-				offsety + height * (0.8 + getRandomValue())
+				offsetx + width * (0.2 + getRandomNumberWithSpread()),
+				offsety + height * (0.8 + getRandomNumberWithSpread())
 			);
 			ctx.lineTo(startPoint.x, startPoint.y);
 			ctx.strokeStyle = getRandomColor();

@@ -1,38 +1,28 @@
-# create-svelte
+# Generative Art
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Examples of the images:
 
-## Creating a project
+![boxes box](resources/boxes_box.png)
+![boxes](resources/boxes.png)
+![circle](resources/circle.png)
+![hull](resources/hull.png)
+![index](resources/index.png)
+![lines lines](resources/lines_lines.png)
+![lines](resources/lines.png)
+![triangle](resources/triangle.png)
+![mesh](resources/triangle_mesh.png)
+![triangle smaller](resources/triangle_smaller_parts.png)
 
-If you're seeing this, you've probably already done this step. Congrats!
 
-```bash
-# create a new project in the current directory
-npm init svelte
+## Links
 
-# create a new project in my-app
-npm init svelte my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- [Generative Machines with Matt DesLauriers](https://www.youtube.com/watch?v=8Uo6zFwSO78)
+- [Tim Holman - Generative Art Speedrun](https://www.youtube.com/watch?v=4Se0_w0ISYk)
+- [Patchwork "Algorithm" with example image](https://twitter.com/mattdesl/status/945728391902265345/photo/4)
+- [Tutorials](https://generativeartistry.com/tutorials/)
+- [Tutorial Github](https://github.com/tholman/tutorial-markdown)
+- [Tom Holman Twitter](https://twitter.com/twholman)
+- [Triangles on Canvas](https://www.educative.io/answers/how-to-draw-triangles-in-html-canvas)
+- [Cluster Algorithm / Lib](https://github.com/NathanEpstein/clusters)
+- [Distance between points](https://www.cuemath.com/geometry/distance-between-two-points/)
+- [Kate Compton: Creating generative art with Javascript | JSConf Iceland 2018](https://www.youtube.com/watch?v=tJ49bTJ6fbs)

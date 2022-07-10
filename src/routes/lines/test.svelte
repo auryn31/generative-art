@@ -28,7 +28,7 @@
 	const draw = (ctx: CanvasRenderingContext2D, width: number, height: number) => {
 		ctx.lineWidth = 2;
 
-		let step = 2;
+		let step = 5;
 		let lines = [];
 
 		// Create the lines
@@ -48,18 +48,18 @@
 			let line = lines[i];
 			ctx.beginPath();
 			ctx.moveTo(step * i, height / 2);
-			// let midPoint = {
-			// 	x: line[0].x + (line[1].x - line[0].x) * 0.5,
-			// 	y: line[0].y + (line[1].y - line[0].y) * 0.5
-			// };
-			// // translate to midpoint
-			// ctx.translate(midPoint.x, midPoint.y);
+			let midPoint = {
+				x: line[0].x + (line[1].x - line[0].x) * 0.5,
+				y: line[0].y + (line[1].y - line[0].y) * 0.5
+			};
+			// translate to midpoint
+			ctx.translate(midPoint.x, midPoint.y);
 
-			// // rotate some angle (radians)
-			// ctx.rotate(Math.PI * 0.25); // = 45°
+			// rotate some angle (radians)
+			ctx.rotate(Math.PI * 0.1); // = 45°
 
 			// // translate back
-			// ctx.translate(-midPoint.x, -midPoint.y);
+			ctx.translate(-midPoint.x, -midPoint.y);
 			ctx.moveTo(line[0].x, line[0].y);
 
 			let y = Math.sin((randomBellCurve() * 10 * Math.PI) / 360) * 100 + line[1].y;

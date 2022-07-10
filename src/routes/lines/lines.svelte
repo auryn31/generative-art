@@ -12,7 +12,7 @@
 		}
 	});
 
-	const randomBellCurve = (): number => {
+	const normalizedRandom = (): number => {
 		return (
 			(Math.random() +
 				Math.random() +
@@ -34,7 +34,7 @@
 		// Create the lines
 		for (let i = step; i <= width - step; i += step) {
 			let line = [];
-			let random = randomBellCurve();
+			let random = normalizedRandom();
 			let point = { x: i, y: height / 2 - (height / 2) * random };
 			line.push(point);
 			point = { x: i, y: height / 2 + (height / 2) * random };

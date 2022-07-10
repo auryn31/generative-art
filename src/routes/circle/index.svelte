@@ -1,5 +1,8 @@
 <script lang="ts">
+	import { circleIsInCircle, randomBellCurve } from '$lib/helper';
+
 	import { onMount } from 'svelte';
+	import type { Circle } from '$lib/model';
 
 	let canvas: HTMLCanvasElement;
 	const width = 700;
@@ -16,26 +19,6 @@
 		}
 	});
 
-	interface Point {
-		x: number;
-		y: number;
-		radius: number;
-	}
-
-	const randomBellCurve = (): number => {
-		return randn_bm(0, 1);
-	};
-	const randn_bm = (min: number, max: number): number => {
-		let u = 0,
-			v = 0;
-		while (u === 0) u = Math.random();
-		while (v === 0) v = Math.random();
-		let num = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
-		num = num / 10.0 + 0.5;
-		if (num > 1 || num < 0) num = randn_bm(min, max);
-		return num;
-	};
-
 	const draw = (ctx: CanvasRenderingContext2D, width: number, height: number) => {
 		let biggerCircle = {
 			x: width / 2,
@@ -47,9 +30,9 @@
 		// ctx.arc(biggerCircle.x, biggerCircle.y, biggerCircle.radius, 0, 2 * Math.PI);
 		// ctx.stroke();
 
-		const circles: Point[] = [];
+		const circles: Circle[] = [];
 		const createAndDrawCircle = () => {
-			let newCircle: Point = {
+			let newCircle: Circle = {
 				x: 0,
 				y: 0,
 				radius: minRadius
@@ -87,22 +70,7 @@
 			ctx.stroke();
 		};
 
-		const circleIsInCircle = (circle: Point, biggerCircle: Point) => {
-			const distSq = Math.sqrt(
-				(circle.x - biggerCircle.x) * (circle.x - biggerCircle.x) +
-					(circle.y - biggerCircle.y) * (circle.y - biggerCircle.y)
-			);
-			if (
-				distSq + circle.radius == biggerCircle.radius ||
-				distSq + circle.radius < biggerCircle.radius
-			) {
-				return true;
-			} else {
-				return false;
-			}
-		};
-
-		const doesCircleHaveACollision = (circle: Point, biggerCircle: Point) => {
+		const doesCircleHaveACollision = (circle: Circle, biggerCircle: Circle) => {
 			// collision with inner circle
 			if (!circleIsInCircle(circle, biggerCircle)) {
 				return true;

@@ -5,7 +5,7 @@
 	let canvas: HTMLCanvasElement;
 	const width = 1000;
 	const height = 1000;
-	const initialPoints = 1000;
+	const initialPoints = 2000;
 
 	onMount(() => {
 		const ctx = canvas.getContext('2d');
@@ -60,7 +60,7 @@
 			ctx.fillStyle = colors[i];
 			let points = cluster.points
 				.sort((a, b) => distance(b, cluster.centroid) - distance(a, cluster.centroid))
-				.slice(0, 200);
+				.slice(0, 300);
 			// calculate center
 			// let centerX = points.map((it) => it[0]).reduce((a, b) => a + b, 0) / points.length;
 			// let centerY = points.map((it) => it[1]).reduce((a, b) => a + b, 0) / points.length;
